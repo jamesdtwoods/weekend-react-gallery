@@ -1,53 +1,36 @@
+import { useState } from 'react';
+
 function GalleryItem ( {item} ) {
     const [isClicked, setIsClicked] = useState(false)
 
-    const isClicked = () => {
+    const toggleClicked = () => {
         setIsClicked(!isClicked)
-  }
+    }
+
+    const displayItem = () => {
+        if (isClicked) {
+          return (
+            <>
+                <p>
+                    {item.description}
+                </p>
+            </>
+          )
+        } else {
+          return (
+            <>
+                <img src={item.url}/>
+            </>
+          )
+        }
+      }
 
 return(
-    <div id={item.id}>
-        <img src={item.url}/>
+    <div id={item.id} onClick={toggleClicked}>
+        {displayItem()}
     </div>
 )
 }
 
 export default GalleryItem;
 
-
-
-const [isNomNomNom, setIsNomNomNom] = useState(false)
-
-  const toggleNomNomNom = () => {
-    setIsNomNomNom(!isNomNomNom)
-  }
-
-  const displayText = () => {
-    if (isNomNomNom) {
-      return (
-        <>
-          NOM NOM NOM
-          <br/>
-          NOM NOM NOM
-        </>
-      )
-    } else {
-      return (
-        <>
-          {cereal.name}
-          <br/>
-          <em>{cereal.description}</em>
-        </>
-      )
-    }
-  }
-
-  return (
-    <li
-      onClick={toggleNomNomNom}
-      className={cereal.isTasty ? 'tasty' : ''}
-    >
-      {displayText()}
-    </li>
-  )
-}
