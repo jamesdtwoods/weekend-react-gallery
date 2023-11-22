@@ -1,11 +1,11 @@
 import GalleryItem from  '../GalleryItem/GalleryItem.jsx';
 
-function GalleryList ( {gallery} ) {
+function GalleryList ( {gallery, getGallery} ) {
 
     return(
         <div data-testid="galleryList" >
         {gallery.map(item => (
-                <GalleryItem item={item} key={item.id} />
+                <GalleryItem item={item} key={item.id} getGallery={getGallery} />
                 ))}
         </div>
     )

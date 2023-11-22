@@ -30,7 +30,7 @@ function App() {
         <p>The gallery goes here!</p>
         <img src="images/goat_small.jpg"/>
         
-        <GalleryList gallery={gallery} />
+        <GalleryList gallery={gallery} getGallery={getGallery} />
         
       </div>
     );

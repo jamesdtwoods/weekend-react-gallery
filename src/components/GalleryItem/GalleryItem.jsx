@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import axios from 'axios';
 
-function GalleryItem ( {item} ) {
+function GalleryItem ( {item, getGallery} ) {
     const [isClicked, setIsClicked] = useState(false)
 
     const toggleClicked = () => {
@@ -25,6 +26,21 @@ function GalleryItem ( {item} ) {
         }
       }
 
+    const onLike = () => {
+        axios({
+            method: 'PUT',
+            url: `/gallery/like/${item.id}`
+        })
+        .then(response => {
+          getGallery();
+        })
+        .catch(err => {
+          alert('Error Adding Like');
+          console.log(err);
+        })
+    };
+
+
 return(
     <>
     <div data-testid="galleryItem" id={item.id} >
@@ -32,6 +48,8 @@ return(
             <h3>{item.title}</h3>
             {displayItem()}
         </div>
+        <button data-testid="like" onClick={onLike} >👍</button>
+        <p>{item.likes} people like this</p>
     </div>
     </>
 )
