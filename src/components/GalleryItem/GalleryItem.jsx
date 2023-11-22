@@ -11,7 +11,7 @@ function GalleryItem ( {item} ) {
         if (isClicked) {
           return (
             <>
-                <p>
+                <p data-testid="description">
                     {item.description}
                 </p>
             </>
@@ -26,9 +26,14 @@ function GalleryItem ( {item} ) {
       }
 
 return(
-    <div id={item.id} onClick={toggleClicked}>
-        {displayItem()}
+    <>
+    <div data-testid="galleryItem" id={item.id} >
+        <div data-testid="toggle" onClick={toggleClicked}>
+            <h3>{item.title}</h3>
+            {displayItem()}
+        </div>
     </div>
+    </>
 )
 }
 
