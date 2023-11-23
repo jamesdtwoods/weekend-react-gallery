@@ -26,12 +26,7 @@ function App() {
         <header>
           <h1>React Gallery</h1>
         </header>
-
-        <p>The gallery goes here!</p>
-        <img src="images/goat_small.jpg"/>
-        
         <GalleryList gallery={gallery} getGallery={getGallery} />
-        
       </div>
     );
 }

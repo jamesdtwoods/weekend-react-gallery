@@ -2,6 +2,11 @@ import { useState } from 'react';
 import axios from 'axios';
 
 function GalleryItem ( {item, getGallery} ) {
+    const values = {
+        height: 100,
+        width: 100
+    }
+
     const [isClicked, setIsClicked] = useState(false)
 
     const toggleClicked = () => {
@@ -20,11 +25,11 @@ function GalleryItem ( {item, getGallery} ) {
         } else {
           return (
             <>
-                <img src={item.url}/>
+                <img style={{ height: values.height, width: values.width }} src={item.url}/>
             </>
           )
         }
-      }
+    }
 
     const onLike = () => {
         axios({
@@ -39,7 +44,6 @@ function GalleryItem ( {item, getGallery} ) {
           console.log(err);
         })
     };
-
 
 return(
     <>
