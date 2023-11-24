@@ -20,6 +20,7 @@ function GalleryItem ( {item, getGallery} ) {
                 <p data-testid="description">
                     {item.description}
                 </p>
+                <img src={item.url}></img>
             </>
           )
         } else {
@@ -45,6 +46,21 @@ function GalleryItem ( {item, getGallery} ) {
         })
     };
 
+
+    const onDelete = () => {
+      axios({
+          method: 'DELETE',
+          url: `/gallery/${item.id}`
+      })
+      .then(response => {
+        getGallery();
+      })
+      .catch(err => {
+        alert('Error Deleting Post');
+        console.log(err);
+      })
+  };
+
 return(
     <>
     <div data-testid="galleryItem" id={item.id} >
@@ -54,6 +70,7 @@ return(
         </div>
         <button data-testid="like" onClick={onLike} >👍</button>
         <p>{item.likes} people like this</p>
+        <button onClick={onDelete} >Remove Post ❌</button>
     </div>
     </>
 )
