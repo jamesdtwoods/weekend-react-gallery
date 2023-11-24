@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import GalleryList from  '../GalleryList/GalleryList.jsx';
+import GalleryForm from  '../GalleryForm/GalleryForm.jsx';
 
 function App() {
   let [gallery, setGallery] = useState([]);
@@ -26,6 +27,7 @@ function App() {
         <header>
           <h1>React Gallery</h1>
         </header>
+        <GalleryForm getGallery={getGallery} />
         <GalleryList gallery={gallery} getGallery={getGallery} />
       </div>
     );
